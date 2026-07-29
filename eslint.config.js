@@ -39,13 +39,6 @@ export default [
         { allowExpressions: true },
       ],
 
-      // Functional-style preference: agent state and signal payloads should be
-      // constructed, not mutated in place, so a signal always reflects a
-      // consistent snapshot at the moment it was emitted.
-      'functional/immutable-data': [
-        'warn',
-        { ignoreImmediateMutation: true },
-      ],
       'functional/no-let': 'warn',
       'functional/no-loop-statements': 'off',
       'functional/no-classes': 'off',
@@ -68,6 +61,29 @@ export default [
       eqeqeq: ['error', 'always'],
       'prefer-const': 'error',
       'no-var': 'error',
+    },
+  },
+  {
+    // Only src/**/*.ts is covered by tsconfig.json's "include", so type-aware
+    // rules (which need a real program) are scoped here rather than to all
+    // *.ts files — root-level tooling configs stay on the simpler, type-free path.
+    files: ['src/**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+    },
+    plugins: {
+      functional,
+    },
+    rules: {
+      // Agent state and signal payloads should be constructed, not mutated in
+      // place, so a signal always reflects a consistent snapshot at the
+      // moment it was emitted.
+      'functional/immutable-data': [
+        'warn',
+        { ignoreImmediateMutation: true },
+      ],
     },
   },
   {
