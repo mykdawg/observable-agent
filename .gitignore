@@ -1,8 +1,64 @@
+# Dependencies
 node_modules/
+.pnpm-store/
+
+# Other package managers — this project is pnpm-only (see CLAUDE.md)
+package-lock.json
+npm-shrinkwrap.json
+yarn.lock
+
+# Build output
 dist/
+build/
+out/
+*.tsbuildinfo
+
+# Test / coverage artifacts
 coverage/
+.nyc_output/
+
+# Logs
 *.log
-.DS_Store
+logs/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & secrets
 .env
 .env.*
 !.env.example
+!.env.*.example
+.envrc
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+*.keystore
+*.jks
+id_rsa
+id_rsa.pub
+*credentials*.json
+*service-account*.json
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Tooling internals (regenerated automatically, not source)
+.husky/_/
+
+# Claude Code local, machine-specific settings — never shared config
+.claude/settings.local.json
