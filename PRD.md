@@ -55,6 +55,8 @@ Given the project's stance that "humans stay in the loop — AI assists, never d
 
 **Needs your call:** does v0.1 need at least one interceptable gate point (e.g. human-approval-before-tool-call) to be useful to you, or is pure observation sufficient to start?
 
+**Update:** a standalone prototype of the interception mechanism now exists (`src/gate.ts`, see [`docs/gate-interception.md`](./docs/gate-interception.md)) so the shape of allow/deny/modify is concrete. It is *not* wired into an Agent (no Agent core exists yet) and does not settle the question above — it's a spike to inform the decision, and it surfaced a few follow-on questions of its own (fail-open vs. fail-closed on handler error, whether gate decisions share the notification-signal envelope) that are listed in that doc.
+
 ## 7. Core concepts
 
 - **Agent** — the observable object. Runs a loop: receive input → decide (LLM call) → act (tool call, if any) → repeat or return. Emits signals at each transition.
